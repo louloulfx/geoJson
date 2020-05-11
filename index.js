@@ -70,3 +70,25 @@ db.place.find({
     },
   },
 });
+
+db.place.insertOne({
+  name: "1er arrondissement",
+  geometry: {
+    type: "Point",
+    coordinates: [2.334766387939453, 48.864827687257964],
+  },
+});
+
+// Retourne tout les points dans un rayon de 2000m
+db.place.find({
+  geometry: {
+    $nearSphere: {
+      $geometry: {
+        type: "Point",
+        coordinates: [2.334766387939453, 48.864827687257964],
+      },
+      $maxDistance: 2000,
+      $minDistance: 0,
+    },
+  },
+});
