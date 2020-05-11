@@ -80,7 +80,7 @@ db.place.insertOne({
   },
 });
 
-// Retourne tout les points dans un rayon de 2000m
+// Retourne tout les points dans un rayon de 2400m
 db.place.find({
   geometry: {
     $nearSphere: {
@@ -88,7 +88,7 @@ db.place.find({
         type: "Point",
         coordinates: [2.334766387939453, 48.864827687257964],
       },
-      $maxDistance: 2000,
+      $maxDistance: 2400,
       $minDistance: 0,
     },
   },
