@@ -71,6 +71,7 @@ db.place.find({
   },
 });
 
+// Centre du rayon de recherche
 db.place.insertOne({
   name: "1er arrondissement",
   geometry: {
