@@ -46,7 +46,7 @@ db.place.find({
         coordinates: [2.3224925994873047, 48.88492435891923],
       },
       $maxDistance: 2000,
-      $minDistance: 0,
+      $minDistance: 20,
     },
   },
 });
@@ -89,7 +89,7 @@ db.place.find({
         coordinates: [2.334766387939453, 48.864827687257964],
       },
       $maxDistance: 2400,
-      $minDistance: 0,
+      $minDistance: 20,
     },
   },
 });
