@@ -31,6 +31,9 @@ db.place.insertOne({
   },
 });
 
+// Création d'un index pour geometry
+db.place.createIndex({ geometry: "2dsphere" });
+
 // Ici on cherche à voir quel lieu est le plus proche du 17 ème arrondissement
 // On cherche dans un premier temps dans un rayon de 2000 m pour voir le nombre de lieu présent
 // Et ensuite on réduit le rayon pour trouver un seul lieu en plus du 17 ème arrondissement
@@ -44,6 +47,26 @@ db.place.find({
       },
       $maxDistance: 2000,
       $minDistance: 0,
+    },
+  },
+});
+
+// Recherche des lieu présent dans le poygone
+db.place.find({
+  geometry: {
+    $geoWithin: {
+      $geometry: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [2.3178577423095703, 48.89220458715174],
+            [2.3054122924804688, 48.87792531090653],
+            [2.3219776153564453, 48.873239917037544],
+            [2.333908081054687, 48.887746278609676],
+            [2.3178577423095703, 48.89220458715174],
+          ],
+        ],
+      },
     },
   },
 });
